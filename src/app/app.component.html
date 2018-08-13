@@ -1,3 +1,17 @@
-<app-header></app-header>
-<app-recipes></app-recipes>
-<app-shoping-list></app-shoping-list>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <app-cockpit
+                (serverCreated)="onServerAdded($event)"
+                (blueprintCreated)="onBlueprintAdded($event)"
+                (serverDeleted)="onServerDeleted($event)"
+                (serverDeleted)="onBlueprintDeleted($event)"
+            ></app-cockpit>
+        </div>
+        <div class="col-12">
+            <app-server-element
+            *ngFor="let serverElement of serverElements"
+            [srvElement]="serverElement"></app-server-element>
+        </div>
+    </div>
+</div>
