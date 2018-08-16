@@ -5,5 +5,7 @@
       class="card-text">{{element.content}}</p>
     <p *ngIf="element.type === 'blueprint'" style="color: blue"
        class="card-text">{{element.content}}</p>
+    <input type="text" #sayHi>
+    <button class="btn btn-info" (click)="onSayHi()">Say Hi</button>
   </div>
 </div>

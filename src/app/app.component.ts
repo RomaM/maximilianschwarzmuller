@@ -10,6 +10,10 @@ export class AppComponent {
     {type: 'server', name: 'TestServer', content: 'TestServer Content'}
     ];
 
+  onSayHiEvent(data: {sayHiData: string}) {
+    console.log(data.sayHiData);
+  }
+
   onServerAdded(serverData: {serverName: string, serverContent: string}) {
     this.serverElements.push({
       type: 'server',
