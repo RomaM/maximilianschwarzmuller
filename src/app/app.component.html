@@ -1,17 +1,10 @@
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <app-cockpit
-                (serverCreated)="onServerAdded($event)"
-                (blueprintCreated)="onBlueprintAdded($event)"
-                (serverDeleted)="onServerDeleted($event)"
-                (serverDeleted)="onBlueprintDeleted($event)"
-            ></app-cockpit>
-        </div>
-        <div class="col-12">
-            <app-server-element
-            *ngFor="let serverElement of serverElements"
-            [srvElement]="serverElement"></app-server-element>
-        </div>
-    </div>
+    <ul>
+        <li><a href="#" (click)="onChangeMenu('recipe')">Recipe</a></li>
+        <li><a href="#" (click)="onChangeMenu('shopping-list')">Shopping List</a></li>
+    </ul>
+</div>
+<div class="container">
+    <app-recipes [recipes]="recipesArr" *ngIf="activeComponent === 'recipe'"></app-recipes>
+    <app-shopping-list *ngIf="activeComponent === 'shopping-list'"></app-shopping-list>
 </div>

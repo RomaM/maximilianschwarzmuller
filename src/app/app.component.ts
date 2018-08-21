@@ -1,38 +1,23 @@
 import { Component } from '@angular/core';
 
+import { Recipe } from './recipes/recipe.model';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  serverElements = [
-    {type: 'server', name: 'TestServer', content: 'TestServer Content'}
-    ];
+  recipesArr: Recipe[] = [
+    {name: 'First Recipe', desc: 'Desc of First Recipe', ingredients: '...ingredients for First Recipe'},
+    {name: 'Second Recipe', desc: 'Desc of Second Recipe', ingredients: '...ingredients for Second Recipe'}
+  ];
 
-  onServerAdded(serverData: {serverName: string, serverContent: string}) {
-    this.serverElements.push({
-      type: 'server',
-      name: serverData.serverName,
-      content: serverData.serverContent
-    });
-  }
+  activeComponent = 'recipe';
 
-  onBlueprintAdded(serverData: {serverName: string, serverContent: string}) {
-    this.serverElements.push({
-      type: 'blueprint',
-      name: serverData.serverName,
-      content: serverData.serverContent
-    });
-  }
-
-  onServerDeleted(serverData: {serverName: string}) {
-    this.serverElements = this.serverElements.filter( item =>
-      item.name !== serverData.serverName);
-  }
-
-  onBluePrintDeleted(serverData: {serverName: string}) {
-    this.serverElements = this.serverElements.filter( item =>
-      item.name !== serverData.serverName);
+  onChangeMenu(data: string) {
+    if (data) {
+      this.activeComponent = data;
+    }
   }
 }
