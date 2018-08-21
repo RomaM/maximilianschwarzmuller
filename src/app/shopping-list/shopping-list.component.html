@@ -1,0 +1,14 @@
+<app-shopping-edit (ingredientAdded)="addIngredient($event)"></app-shopping-edit>
+<br>
+<div class="row">
+  <div class="col-12">
+    <ul class="list-group" *ngIf="ingredients">
+      <li class="list-group-item" *ngFor="let item of ingredients">
+        <h5
+          [ngClass]="{blueClass: blueClass === true}"
+          [ngStyle]="{borderLeft: blueClass === true ? '2px solid blue' : 'none'}">{{item.name}}</h5>
+        <p>{{item.amount}}</p>
+      </li>
+    </ul>
+  </div>
+</div>
