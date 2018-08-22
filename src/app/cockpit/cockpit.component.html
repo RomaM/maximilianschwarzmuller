@@ -17,3 +17,13 @@
 <button
         class="btn btn-primary"
         (click)="onRemoveBlueprint()">Remove Blueprint</button>
+
+
+<ng-template>
+
+</ng-template>
+
+<hr>
+<p appBasicHighlight>Paragraph which used custom BasicHighLight directive</p>
+<p [appHighlight]="'red'" defaultColor="yellow">Paragraph which used custom HighLight directive</p>
+<hr>

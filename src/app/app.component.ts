@@ -39,4 +39,5 @@ export class AppComponent {
     this.serverElements = this.serverElements.filter( item =>
       item.name !== serverData.serverName);
   }
+
 }
