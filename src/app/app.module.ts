@@ -7,6 +7,7 @@ import { ServerElementComponent } from './server-element/server-element.componen
 import { CockpitComponent } from './cockpit/cockpit.component';
 import {BasicHighlightDirective} from './directives/basic-highlight/basic-highlight.directive';
 import {HighlightDirective} from './directives/highlight/highlight.directive';
+import { UnlessDirective } from './directives/unless/unless.directive';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {HighlightDirective} from './directives/highlight/highlight.directive';
     ServerElementComponent,
     CockpitComponent,
     BasicHighlightDirective,
-    HighlightDirective
+    HighlightDirective,
+    UnlessDirective
   ],
   imports: [
     BrowserModule,

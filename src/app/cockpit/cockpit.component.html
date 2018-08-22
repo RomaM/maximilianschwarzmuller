@@ -18,12 +18,20 @@
         class="btn btn-primary"
         (click)="onRemoveBlueprint()">Remove Blueprint</button>
 
+<hr><hr>
 
-<ng-template>
+<!--<div class="template" *appUnless="false">-->
+    <!--<p>Paragraph inside *</p>-->
+<!--</div>-->
 
+<!-- Angular template that allows to use block inside except himself "ng-template" -->
+<ng-template [appUnless]="false">
+    <div class="template">
+        <p>Paragraph inside NG-TEMPLATE</p>
+    </div>
 </ng-template>
 
-<hr>
+<hr><hr>
 <p appBasicHighlight>Paragraph which used custom BasicHighLight directive</p>
 <p [appHighlight]="'red'" defaultColor="yellow">Paragraph which used custom HighLight directive</p>
-<hr>
+<hr><hr>
