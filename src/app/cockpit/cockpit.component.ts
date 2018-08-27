@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, OnChanges, OnInit, DoCheck, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnChanges, OnInit, DoCheck, Output, ViewChild, Input} from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -11,6 +11,8 @@ export class CockpitComponent implements OnInit, OnChanges, DoCheck {
 
   @Output() serverDeleted = new EventEmitter<{serverName: string}>();
   @Output() blueprintDeleted = new EventEmitter<{serverName: string}>();
+
+  @Input() receivedValue: number;
 
   @ViewChild('sayHiListener') sayHiListener: ElementRef;
   newServerName = '';

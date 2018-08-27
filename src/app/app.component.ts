@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  value = 5;
+
   serverElements = [
     {type: 'server', name: 'TestServer', content: 'TestServer Content'}
     ];
