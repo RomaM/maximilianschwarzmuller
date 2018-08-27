@@ -1,13 +1,20 @@
 <h4>{{recipeDetails.name}}</h4>
 <h5>{{recipeDetails.desc}}</h5>
 <h6>{{recipeDetails.ingredients}}</h6>
-<div class="btn-group" role="group">
-    <button id="btnGroupDrop" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<div class="btn-group" role="group" appDropdown>
+    <button
+            id="btnGroupDrop"
+            type="button"
+            class="btn btn-secondary dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >
         Manage Recipe
     </button>
-    <div class="dropdown-menu show" aria-labelledby="btnGroupDrop">
-        <a class="dropdown-item" href="#"></a>
-        <a class="dropdown-item" href="#">Dropdown link</a>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
     </div>
 </div>
 
