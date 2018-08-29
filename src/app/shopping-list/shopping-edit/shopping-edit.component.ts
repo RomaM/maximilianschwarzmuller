@@ -17,9 +17,8 @@ export class ShoppingEditComponent implements OnInit {
   }
 
   onAddItem(name, amount) {
+    amount = parseInt(amount, 10);
     this.shoppingListService.addIngredient(name, amount);
-
-    console.log(this.shoppingListService.ingredients);
   }
 
   onRemoveItem(name) {

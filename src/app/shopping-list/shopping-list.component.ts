@@ -5,8 +5,7 @@ import {ShoppingListService} from '../services/shoping-list.service';
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
-  styleUrls: ['./shopping-list.component.scss'],
-  providers: [ShoppingListService]
+  styleUrls: ['./shopping-list.component.scss']
 })
 export class ShoppingListComponent implements OnInit, DoCheck {
   ingredients: {name: string, amount: number}[] = [];
@@ -15,9 +14,10 @@ export class ShoppingListComponent implements OnInit, DoCheck {
   constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit() {
+    this.ingredients = this.shoppingListService.ingredients;
   }
 
   ngDoCheck() {
-    this.ingredients = this.shoppingListService.ingredients;
+
   }
 }

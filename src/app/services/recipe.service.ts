@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+
 export class AccountService {
   recipesArr: Recipe[] = [
     {name: 'First Recipe', desc: 'Desc of First Recipe', ingredients: '...ingredients for First Recipe'},
