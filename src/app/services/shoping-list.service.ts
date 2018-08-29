@@ -18,8 +18,13 @@ export class ShoppingListService {
   }
 
   removeIngredient(name: string) {
-    this.logData.logStatusChange(this.ingredients);
+    this.ingredients.forEach((el, i, arr) => {
+      if (el.name === name) {
+        arr.splice(i, 1);
+      }
+    });
 
-    this.ingredients = this.ingredients.filter(item => item.name !== name);
+    this.logData.logStatusChange(this.ingredients);
+    setTimeout(() => this.logData.logStatusChange(this.ingredients), 1000);
   }
 }
