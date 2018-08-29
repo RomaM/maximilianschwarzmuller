@@ -1,23 +1,21 @@
 import { Component } from '@angular/core';
-
-import { Recipe } from './recipes/recipe.model';
+import {LoggingService} from './services/logging.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [LoggingService]
 })
 export class AppComponent {
-  recipesArr: Recipe[] = [
-    {name: 'First Recipe', desc: 'Desc of First Recipe', ingredients: '...ingredients for First Recipe'},
-    {name: 'Second Recipe', desc: 'Desc of Second Recipe', ingredients: '...ingredients for Second Recipe'}
-  ];
+  constructor(private logData: LoggingService) {}
 
   activeComponent = 'recipe';
 
   onChangeMenu(data: string) {
     if (data) {
       this.activeComponent = data;
+      this.logData.logStatusChange(data);
     }
   }
 }

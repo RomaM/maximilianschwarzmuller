@@ -1,26 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 
-import { Ingredient } from './ingredient.model';
+import {ShoppingListService} from '../services/shoping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
-  styleUrls: ['./shopping-list.component.scss']
+  styleUrls: ['./shopping-list.component.scss'],
+  providers: [ShoppingListService]
 })
-export class ShoppingListComponent implements OnInit {
-  ingredients: Ingredient[] = [
-    new Ingredient('Lemon', 15),
-    new Ingredient('Watermelon', 35)
-  ];
-
+export class ShoppingListComponent implements OnInit, DoCheck {
+  ingredients: {name: string, amount: number}[] = [];
   blueClass = true;
 
-  constructor() { }
+  constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit() {
   }
 
-  addIngredient(data: Ingredient) {
-    this.ingredients.push(data);
+  ngDoCheck() {
+    this.ingredients = this.shoppingListService.ingredients;
   }
 }
