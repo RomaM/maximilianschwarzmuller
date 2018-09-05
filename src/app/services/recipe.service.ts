@@ -1,9 +1,12 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
+export class RecipeService {
+  selectedRecipe = new EventEmitter<Recipe>();
 
-export class AccountService {
   recipesArr: Recipe[] = [
     {name: 'First Recipe', desc: 'Desc of First Recipe', ingredients: '...ingredients for First Recipe'},
     {name: 'Second Recipe', desc: 'Desc of Second Recipe', ingredients: '...ingredients for Second Recipe'}

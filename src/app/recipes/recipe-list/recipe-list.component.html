@@ -1,6 +1,3 @@
 <div *ngFor="let item of recipes">
-  <app-recipe-item
-      [itemData]="item"
-      (selectedItem)="onSelectedItem(item)"
-  ></app-recipe-item>
+  <app-recipe-item [itemData]="item"></app-recipe-item>
 </div>

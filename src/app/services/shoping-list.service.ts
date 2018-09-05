@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Ingredient } from '../shopping-list/ingredient.model';
 import {LoggingService} from './logging.service';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 
 export class ShoppingListService {
   constructor(private logData: LoggingService) {}
