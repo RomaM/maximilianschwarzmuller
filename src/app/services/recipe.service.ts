@@ -1,5 +1,6 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
+import {Ingredient} from '../shopping-list/ingredient.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,22 @@ export class RecipeService {
   selectedRecipe = new EventEmitter<Recipe>();
 
   recipesArr: Recipe[] = [
-    {name: 'First Recipe', desc: 'Desc of First Recipe', ingredients: '...ingredients for First Recipe'},
-    {name: 'Second Recipe', desc: 'Desc of Second Recipe', ingredients: '...ingredients for Second Recipe'}
+    new Recipe(
+      'First Recipe',
+      'Desc of First Recipe',
+      [
+        new Ingredient('Meat', 100),
+        new Ingredient('Solt', 1)
+      ]
+    ),
+    new Recipe(
+      'First Recipe',
+      'Desc of First Recipe',
+      [
+        new Ingredient('Meat', 100),
+        new Ingredient('Solt', 1)
+      ]
+    ),
   ];
 
   addRecipe(name: string, desc: string, ingredients: any) {

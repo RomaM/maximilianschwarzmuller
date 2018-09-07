@@ -1,6 +1,7 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
 
 import {ShoppingListService} from '../services/shoping-list.service';
+import {Ingredient} from './ingredient.model';
 
 @Component({
   selector: 'app-shopping-list',
@@ -14,7 +15,11 @@ export class ShoppingListComponent implements OnInit, DoCheck {
   constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit() {
-    this.ingredients = this.shoppingListService.ingredients;
+    this.ingredients = this.shoppingListService.getIngredients();
+    this.shoppingListService.ingredientsChange
+      .subscribe((ingredients: Ingredient[]) => {
+      this.ingredients = ingredients;
+    });
   }
 
   ngDoCheck() {

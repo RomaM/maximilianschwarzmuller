@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import { Ingredient } from '../shopping-list/ingredient.model';
 import {LoggingService} from './logging.service';
 
@@ -7,14 +7,21 @@ import {LoggingService} from './logging.service';
 export class ShoppingListService {
   constructor(private logData: LoggingService) {}
 
+  ingredientsChange = new EventEmitter<Ingredient[]>()
+
   ingredients: Ingredient[] = [
-    {name: 'Lemon', amount: 15},
-    {name: 'Watermelon', amount: 35}
+    new Ingredient('Lemon', 15),
+    new Ingredient('Watermelon', 35),
   ];
 
-  addIngredient(name: string, amount: number) {
-    this.ingredients.push({name, amount});
+  getIngredients() {
+    return this.ingredients.slice();
+  }
+
+  addIngredient(ingredient: Ingredient) {
+    this.ingredients.push(ingredient);
     this.logData.logStatusChange(this.ingredients);
+    this.ingredientsChange.emit(this.ingredients.slice());
   }
 
   removeIngredient(name: string) {

@@ -1,6 +1,7 @@
 import {Component, ViewChild, OnInit, ElementRef} from '@angular/core';
 
 import {ShoppingListService} from '../../services/shoping-list.service';
+import {Ingredient} from '../ingredient.model';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -16,9 +17,12 @@ export class ShoppingEditComponent implements OnInit {
   ngOnInit() {
   }
 
-  onAddItem(name, amount) {
+  onAddItem() {
+    const name: string = this.nameInputRef.nativeElement.value;
+    let amount: any = this.amountInputRef.nativeElement.value;
     amount = parseInt(amount, 10);
-    this.shoppingListService.addIngredient(name, amount);
+    const ingredient: Ingredient = new Ingredient(name, amount);
+    this.shoppingListService.addIngredient(ingredient);
   }
 
   onRemoveItem(name) {
