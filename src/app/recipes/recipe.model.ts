@@ -5,7 +5,7 @@ export class Recipe {
   public desc: string;
   public ingredients: Ingredient[];
 
-  constructor(private name: string, private desc: string, private ingredients: Ingredient[]) {
+  constructor(name: string, desc: string, ingredients: Ingredient[]) {
     this.name = name;
     this.desc = desc;
     this.ingredients = ingredients;

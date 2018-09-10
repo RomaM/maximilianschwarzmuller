@@ -34,4 +34,9 @@ export class ShoppingListService {
     this.logData.logStatusChange(this.ingredients);
     setTimeout(() => this.logData.logStatusChange(this.ingredients), 1000);
   }
+
+  addIngredients(ingredients: Ingredient[]) {
+    this.ingredients.push(...ingredients);
+    this.ingredientsChange.emit(this.ingredients.slice());
+  }
 }
