@@ -2,8 +2,8 @@
     <div class="row justify-content-between">
         <div class="col-auto">
             <ul>
-                <li><a href="#" (click)="onChangeMenu('recipe')">Recipe</a></li>
-                <li><a href="#" (click)="onChangeMenu('shopping-list')">Shopping List</a></li>
+                <li><a routerLinkActive="active" href="#" routerLink="/recipes">Recipe</a></li>
+                <li><a routerLinkActive="active" href="#" routerLink="/shopping-list">Shopping List</a></li>
             </ul>
         </div>
         <div class="col-auto">
@@ -12,15 +12,15 @@
                     Dropdown button
                 </button>
                 <div class="dropdown-menu" aria-labelledby="mainDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item">Action</a>
+                    <a class="dropdown-item">Another action</a>
+                    <a class="dropdown-item">Something else here</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <div class="container">
-    <app-recipes [recipes]="recipesArr" *ngIf="activeComponent === 'recipe'"></app-recipes>
-    <app-shopping-list *ngIf="activeComponent === 'shopping-list'"></app-shopping-list>
+    <router-outlet></router-outlet>
+
 </div>

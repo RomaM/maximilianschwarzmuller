@@ -19,7 +19,7 @@ export class RecipeService {
       ]
     ),
     new Recipe(
-      'First Recipe',
+      'Second Recipe',
       'Desc of First Recipe',
       [
         new Ingredient('Meat', 100),
