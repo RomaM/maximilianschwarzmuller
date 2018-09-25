@@ -1,4 +1,4 @@
-<a>
+<a [routerLink]="[index]">
   <h5>{{itemData.name}}</h5>
   <p>{{itemData.desc}}</p>
   <h6 *ngFor="let item of itemData.ingredients">{{item.name}} | {{item.amount}}</h6>
