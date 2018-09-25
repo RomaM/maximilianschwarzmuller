@@ -15,6 +15,7 @@ import {ShoppingListService} from './services/shoping-list.service';
 import {LoggingService} from './services/logging.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {AppRoutingModule} from './app-routing.module';
+import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {AppRoutingModule} from './app-routing.module';
     ShoppingListComponent,
     ShoppingEditComponent,
     DropdownDirective,
-    NotFoundComponent
+    NotFoundComponent,
+    RecipeStartComponent
   ],
   imports: [
     BrowserModule,

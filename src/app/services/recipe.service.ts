@@ -30,6 +30,10 @@ export class RecipeService {
 
   constructor(private shoppingListService: ShoppingListService) {}
 
+  getRecipe(id: number) {
+    return this.recipesArr[id];
+  }
+
   addRecipe(name: string, desc: string, ingredients: any) {
     this.recipesArr.push({name, desc, ingredients});
   }

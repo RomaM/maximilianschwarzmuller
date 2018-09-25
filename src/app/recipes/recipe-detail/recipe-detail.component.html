@@ -1,6 +1,6 @@
-<h4>{{recipeDetails.name}}</h4>
-<h5>{{recipeDetails.desc}}</h5>
-<h6 *ngFor="let item of recipeDetails.ingredients">
+<h4>{{recipe.name}}</h4>
+<h5>{{recipe.desc}}</h5>
+<h6 *ngFor="let item of recipe.ingredients">
     Ingredient: {{item.name}}, Amount: {{item.amount}}
 </h6>
 <div class="btn-group" role="group" appDropdown>
