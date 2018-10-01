@@ -1,5 +1,5 @@
 import {ActivatedRoute, ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {ServersService} from '../servers.service';
 import {Injectable} from '@angular/core';
 
