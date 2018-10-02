@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {LoggingService} from './services/logging.service';
+import {Component, ElementRef, ViewChild} from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +7,15 @@ import {LoggingService} from './services/logging.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @ViewChild('f') signupForm: NgForm;
+
   constructor() {}
 
-  activeComponent = 'recipe';
+  // onSubmit(form: NgForm) {
+  //   console.log(form);
+  // }
 
-  onChangeMenu(data: string) {
-    if (data) {
-      this.activeComponent = data;
-    }
+  onSubmit() {
+    console.log(this.signupForm);
   }
 }
