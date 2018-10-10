@@ -1,5 +1,4 @@
-import {Component, DoCheck, OnDestroy, OnInit} from '@angular/core';
-
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ShoppingListService} from '../services/shoping-list.service';
 import {Ingredient} from './ingredient.model';
 import {Subscription} from 'rxjs/index';
@@ -9,7 +8,7 @@ import {Subscription} from 'rxjs/index';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.scss']
 })
-export class ShoppingListComponent implements OnInit, DoCheck, OnDestroy {
+export class ShoppingListComponent implements OnInit, OnDestroy {
   ingredients: {name: string, amount: number}[] = [];
   blueClass = true;
   private subscription: Subscription;
@@ -24,11 +23,11 @@ export class ShoppingListComponent implements OnInit, DoCheck, OnDestroy {
     });
   }
 
-  ngDoCheck() {
-
-  }
-
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  onEditItem(index: number) {
+    this.shoppingListService.startedEditing.next(index);
   }
 }

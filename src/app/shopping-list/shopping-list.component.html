@@ -3,12 +3,16 @@
 <div class="row">
   <div class="col-12">
     <ul class="list-group" *ngIf="ingredients">
-      <li class="list-group-item" *ngFor="let item of ingredients">
+      <a
+				style="cursor: pointer;"
+        class="list-group-item"
+				*ngFor="let item of ingredients; let i = index;"
+				(click)="onEditItem(i)">
         <h5
           [ngClass]="{blueClass: blueClass === true}"
           [ngStyle]="{borderLeft: blueClass === true ? '2px solid blue' : 'none'}">{{item.name}}</h5>
         <p>{{item.amount}}</p>
-      </li>
+      </a>
     </ul>
   </div>
 </div>
