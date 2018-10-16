@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
 import {Ingredient} from '../shopping-list/ingredient.model';
 import {ShoppingListService} from './shoping-list.service';
-import {Subject} from 'rxjs/index';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -46,12 +46,9 @@ export class RecipeService {
     this.recipesArr[index] = newRecipe;
   }
 
-  removeRecipe(name: string) {
-    this.recipesArr = this.recipesArr.filter(item => {
-      if ( item.name.toLowerCase() !== name.toLowerCase()) {
-        return item;
-      }
-    });
+  deleteRecipe(index: number) {
+    this.recipesArr.splice(index, 1);
+    this.recipeChanged.next(this.recipesArr.slice());
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {

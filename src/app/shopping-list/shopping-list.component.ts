@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ShoppingListService} from '../services/shoping-list.service';
 import {Ingredient} from './ingredient.model';
-import {Subscription} from 'rxjs/index';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-shopping-list',
@@ -11,7 +11,7 @@ import {Subscription} from 'rxjs/index';
 export class ShoppingListComponent implements OnInit, OnDestroy {
   ingredients: {name: string, amount: number}[] = [];
   blueClass = true;
-  private subscription: Subscription;
+  subscription: Subscription;
 
   constructor(private shoppingListService: ShoppingListService) { }
 
