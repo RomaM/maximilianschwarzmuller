@@ -1,5 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,58 +6,41 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild('f') signupForm: NgForm;
-  @ViewChild('form') form: NgForm;
+  servers = [
+    {
+      instanceType: 'medium',
+      name: 'Production Server',
+      status: 'stable',
+      started: new Date(15, 1, 2018)
+    },
+    {
+      instanceType: 'large',
+      name: 'User Database',
+      status: 'stable',
+      started: new Date(15, 1, 2018)
+    },
+    {
+      instanceType: 'small',
+      name: 'Development Server',
+      status: 'offline',
+      started: new Date(15, 1, 2018)
+    },
+    {
+      instanceType: 'small',
+      name: 'Testing Environment Server',
+      status: 'stable',
+      started: new Date(15, 1, 2018)
+    },
+  ];
 
-  defaultQuestion = 'pet';
-  answer = '';
-  genders = ['male', 'female'];
-  user = {
-    username: '',
-    useremail: '',
-    userquestion: '',
-    useranswer: '',
-    usergender: ''
+  getStatusClasses(server: {
+    instanceType: string, name: string, status: string, started: Date}) {
+    return {
+      'list-group-item-success': server.status === 'stable',
+      'list-group-item-warning': server.status === 'offline',
+      'list-group-item-danger': server.status === 'critical'
+    }
   }
-  submited = false;
 
   constructor() {}
-
-  suggestUserName() {
-    const suggestedName = 'Superuser';
-    // this.signupForm.setValue({ // Must include all keys: value
-    //   userData: {
-    //     username: suggestedName,
-    //     useremail: ''
-    //   },
-    //   userquestion: 'pet',
-    //   useranswer: '',
-    //   usergender: 'male'
-    // });
-
-    this.signupForm.form.patchValue({ // overwriting part of the form
-      userData: {
-        username: suggestedName
-      }
-    });
-  }
-
-  // onSubmit(form: NgForm) {
-  //   console.log(form);
-  // }
-
-  onSubmit() {
-    this.user.username = this.signupForm.value.userData.username;
-    this.user.useremail = this.signupForm.value.userData.useremail;
-    this.user.userquestion = this.signupForm.value.userquestion;
-    this.user.useranswer = this.signupForm.value.useranswer;
-    this.user.usergender = this.signupForm.value.gender;
-    this.submited = true;
-
-    this.signupForm.reset();
-  }
-
-  onSubmitForm() {
-    console.log(this.form);
-  }
 }
