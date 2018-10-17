@@ -10,10 +10,12 @@
 					class="list-group-item d-flex justify-content-between"
 					*ngFor="let server of servers"
 					[ngClass]="getStatusClasses(server)">
-					<strong>{{server.name}}</strong> |
-					{{server.instanceType | uppercase}} |
-					{{server.started | date}}
-					<span class="badge badge-info badge-pill">{{server.status}}</span>
+					<span>
+						<strong>{{server.name}}</strong> |
+						{{server.instanceType | uppercase}} |
+						{{server.started | date: 'fullDate'}}
+					</span>
+					<span class="badge badge-info">{{server.status}}</span>
 				</li>
 			</ul>
 		</div>
