@@ -16,25 +16,25 @@ export class AppComponent {
       instanceType: 'medium',
       name: 'Production',
       status: 'stable',
-      started: new Date(15, 1, 2018)
+      started: new Date(2018, 1, 20)
     },
     {
       instanceType: 'large',
       name: 'User Database',
       status: 'stable',
-      started: new Date(15, 1, 2018)
+      started: new Date(2018, 2, 10)
     },
     {
       instanceType: 'small',
       name: 'Development Server',
       status: 'offline',
-      started: new Date(15, 1, 2018)
+      started: new Date(2018, 3, 30)
     },
     {
       instanceType: 'small',
       name: 'Testing Environment Server',
       status: 'stable',
-      started: new Date(15, 1, 2018)
+      started: new Date(2018, 4, 5)
     },
   ];
 
@@ -54,7 +54,7 @@ export class AppComponent {
       instanceType: 'small',
       name: 'New Server',
       status: 'stable',
-      started: new Date(15, 1, 2018)
+      started: new Date(2017, 1, 8)
     });
   }
 }

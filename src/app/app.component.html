@@ -11,11 +11,11 @@
 			<ul class="list-group">
 				<li
 					class="list-group-item d-flex justify-content-between"
-					*ngFor="let server of servers | filter:filteredStatus:'status'"
+					*ngFor="let server of servers | filter:filteredStatus:'status' | sort:'started'"
 					[ngClass]="getStatusClasses(server)">
 					<span>
 						<strong>{{server.name | shorten:15:' ...'}}</strong> |
-						{{server.instanceType | uppercase}} |
+						{{server.instanceType | uppercase | reverse}} |
 						{{server.started | date: 'fullDate'}}
 					</span>
 					<span class="badge badge-info">{{server.status}}</span>
