@@ -5,13 +5,16 @@
 			<h3>Server Statuses:</h3>
 		</div>
 		<div class="col-12">
+			<input type="text" class="form-control" [(ngModel)]="filteredStatus"><br>
+			<button type="button" class="btn btn-success" (click)="onAddServer()">Add Server</button><br>
+			<h3>App Status: {{appStatus | async}}</h3><br>
 			<ul class="list-group">
 				<li
 					class="list-group-item d-flex justify-content-between"
-					*ngFor="let server of servers"
+					*ngFor="let server of servers | filter:filteredStatus:'status'"
 					[ngClass]="getStatusClasses(server)">
 					<span>
-						<strong>{{server.name}}</strong> |
+						<strong>{{server.name | shorten:15:' ...'}}</strong> |
 						{{server.instanceType | uppercase}} |
 						{{server.started | date: 'fullDate'}}
 					</span>
