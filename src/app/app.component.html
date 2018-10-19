@@ -1,26 +1,16 @@
 <div class="container">
-	<div class="row">
-		<div class="col-12">
-			<br>
-			<h3>Server Statuses:</h3>
-		</div>
-		<div class="col-12">
-			<input type="text" class="form-control" [(ngModel)]="filteredStatus"><br>
-			<button type="button" class="btn btn-success" (click)="onAddServer()">Add Server</button><br>
-			<h3>App Status: {{appStatus | async}}</h3><br>
-			<ul class="list-group">
-				<li
-					class="list-group-item d-flex justify-content-between"
-					*ngFor="let server of servers | filter:filteredStatus:'status' | sort:'started'"
-					[ngClass]="getStatusClasses(server)">
-					<span>
-						<strong>{{server.name | shorten:15:' ...'}}</strong> |
-						{{server.instanceType | uppercase | reverse}} |
-						{{server.started | date: 'fullDate'}}
-					</span>
-					<span class="badge badge-info">{{server.status}}</span>
-				</li>
-			</ul>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <input type="text" #serverName>
+      <button class="btn btn-primary" (click)="onAddServer(serverName.value)">Add Server</button>
+      <br><br>
+      <button type="button" class="btn btn-info" (click)="onSave()">Save Servers</button>
+      <br><br>
+      <button type="button" class="btn btn-dark" (click)="onGet()">Get Servers</button>
+      <hr>
+      <ul class="list-group" *ngFor="let server of servers">
+        <li class="list-group-item">{{ server.name }} (ID: {{ server.id }})</li>
+      </ul>
+    </div>
+  </div>
 </div>

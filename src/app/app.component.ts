@@ -1,4 +1,6 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
+import {ServerService} from './server.service';
+import {Response} from '@angular/http';
 
 @Component({
   selector: 'app-root',
@@ -6,55 +8,44 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  appStatus = new Promise((resolve, reject) => {
-    setTimeout( () => {
-      resolve('stable');
-    }, 2000);
-  });
   servers = [
     {
-      instanceType: 'medium',
-      name: 'Production',
-      status: 'stable',
-      started: new Date(2018, 1, 20)
+      name: 'Testserver',
+      capacity: 10,
+      id: this.generateId()
     },
     {
-      instanceType: 'large',
-      name: 'User Database',
-      status: 'stable',
-      started: new Date(2018, 2, 10)
-    },
-    {
-      instanceType: 'small',
-      name: 'Development Server',
-      status: 'offline',
-      started: new Date(2018, 3, 30)
-    },
-    {
-      instanceType: 'small',
-      name: 'Testing Environment Server',
-      status: 'stable',
-      started: new Date(2018, 4, 5)
-    },
+      name: 'Liveserver',
+      capacity: 100,
+      id: this.generateId()
+    }
   ];
-
-  filteredStatus = '';
-
-  getStatusClasses(server: {
-    instanceType: string, name: string, status: string, started: Date}) {
-    return {
-      'list-group-item-success': server.status === 'stable',
-      'list-group-item-warning': server.status === 'offline',
-      'list-group-item-danger': server.status === 'critical'
-    };
-  }
-
-  onAddServer() {
+  constructor(private serverService: ServerService) {}
+  onAddServer(name: string) {
     this.servers.push({
-      instanceType: 'small',
-      name: 'New Server',
-      status: 'stable',
-      started: new Date(2017, 1, 8)
+      name: name,
+      capacity: 50,
+      id: this.generateId()
     });
+  }
+  onSave() {
+    this.serverService.storeServer(this.servers)
+      .subscribe(
+        (response) => console.log(response),
+        (error) => console.log(error)
+      );
+  }
+  onGet() {
+    this.serverService.getServers()
+      .subscribe(
+        (response: Response) => {
+          const data = response.json();
+          console.log(data);
+        },
+        (error) => console.log(error)
+      );
+  }
+  private generateId() {
+    return Math.round(Math.random() * 10000);
   }
 }
