@@ -20,6 +20,7 @@ export class AppComponent {
       id: this.generateId()
     }
   ];
+  appName = this.serverService.getAppName();
   constructor(private serverService: ServerService) {}
   onAddServer(name: string) {
     this.servers.push({
@@ -38,10 +39,7 @@ export class AppComponent {
   onGet() {
     this.serverService.getServers()
       .subscribe(
-        (response: Response) => {
-          const data = response.json();
-          console.log(data);
-        },
+        (servers: any[]) => { this.servers = servers; },
         (error) => console.log(error)
       );
   }
