@@ -1,16 +1,24 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoggingService} from './services/logging.service';
 import {DataStorageService} from './shared/data-storage.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   constructor(private dataStorageService: DataStorageService) {}
 
   activeComponent = 'recipe';
+
+  ngOnInit() {
+    firebase.initializeApp({
+      apiKey: 'AIzaSyCMMmKapVEmocqjf6vUwebiBAsTb9_e43A',
+      authDomain: 'http-test-ab7be.firebaseapp.com'
+    });
+  }
 
   onChangeMenu(data: string) {
     if (data) {

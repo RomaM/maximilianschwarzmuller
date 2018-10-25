@@ -23,7 +23,6 @@ export class DataStorageService {
           const recipes: Recipe[] = response.json();
           for (const recipe of recipes) {
             if (!recipe['ingredients']) {
-              console.log(recipe);
               recipe['ingredients'] = [];
             }
           }
