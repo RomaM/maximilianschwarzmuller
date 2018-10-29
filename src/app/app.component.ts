@@ -2,20 +2,22 @@ import {Component, OnInit} from '@angular/core';
 import {LoggingService} from './services/logging.service';
 import {DataStorageService} from './shared/data-storage.service';
 import * as firebase from 'firebase';
+import {AuthService} from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
-  constructor(private dataStorageService: DataStorageService) {}
+export class AppComponent implements OnInit {
+  constructor(private dataStorageService: DataStorageService,
+              private authService: AuthService) {}
 
   activeComponent = 'recipe';
 
   ngOnInit() {
     firebase.initializeApp({
-      apiKey: '',
+
       authDomain: 'http-test-ab7be.firebaseapp.com'
     });
   }
@@ -36,5 +38,9 @@ export class AppComponent implements OnInit{
 
   onFetchData() {
     this.dataStorageService.getRecipes();
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 }

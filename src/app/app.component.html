@@ -7,14 +7,23 @@
             </ul>
         </div>
         <div class="col-auto">
-            <div class="dropdown" appDropdown>
-                <button class="btn btn-info">Register</button>
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="mainDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown button
-                </button>
-                <div class="dropdown-menu" aria-labelledby="mainDropdown">
-                    <a class="dropdown-item" (click)="onSaveData()">Save Data</a>
-                    <a class="dropdown-item" (click)="onFetchData()">Fetch Data</a>
+            <div class="row">
+                <div class="col" *ngIf="!authService.isAuthenticated()">
+                    <button class="btn btn-info" routerLink="/signup">Register</button>
+                    <button class="btn btn-success" routerLink="/signin">LogIn</button>
+                </div>
+    
+                <div class="col" *ngIf="authService.isAuthenticated()">
+                    <button class="btn btn-danger" (click)="onLogout()">LogOut</button>
+                </div>
+                <div class="dropdown col" appDropdown *ngIf="authService.isAuthenticated()">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="mainDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="mainDropdown">
+                        <a class="dropdown-item" (click)="onSaveData()">Save Data</a>
+                        <a class="dropdown-item" (click)="onFetchData()">Fetch Data</a>
+                    </div>
                 </div>
             </div>
         </div>
