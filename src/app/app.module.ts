@@ -42,7 +42,7 @@ import { SigninComponent } from './auth/signin/signin.component';
     AppRoutingModule,
     HttpModule
   ],
-  // providers: [ShoppingListService, LoggingService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
