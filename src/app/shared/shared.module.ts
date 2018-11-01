@@ -6,10 +6,8 @@ import {CommonModule} from '@angular/common';
   declarations: [
     DropdownDirective
   ],
-  exports: [
-    CommonModule,
-    DropdownDirective
-  ]
+  imports: [CommonModule],
+  exports: [DropdownDirective]
 })
 
 export class SharedModule {}
