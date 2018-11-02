@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {ShoppingListComponent} from './shopping-list/shopping-list.component';
-import {NotFoundComponent} from './not-found/not-found.component';
-import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from './home/home.component';
+import {NotFoundComponent} from './core/not-found/not-found.component';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from './core/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,7 +12,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})
+  ],
   exports: [RouterModule]
 })
 
