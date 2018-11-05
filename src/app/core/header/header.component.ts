@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DataStorageService} from '../../shared/data-storage.service';
 import {AuthService} from '../../auth/auth.service';
 import * as firebase from 'firebase';
+import {HttpEvent, HttpEventType} from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     firebase.initializeApp({
-
+      apiKey: 'AIzaSyCMMmKapVEmocqjf6vUwebiBAsTb9_e43A',
       authDomain: 'http-test-ab7be.firebaseapp.com'
     });
   }
@@ -34,8 +35,10 @@ export class HeaderComponent implements OnInit {
   onSaveData() {
     this.dataStorageService.storeRecipes()
       .subscribe(
-        (response) => { console.log(response); },
-        (error: Response) => { console.log(error); }
+        (response) => {
+          console.log(response);
+          },
+        (error) => { console.log(error); }
       );
   }
 
