@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     firebase.initializeApp({
-      apiKey: 'AIzaSyCMMmKapVEmocqjf6vUwebiBAsTb9_e43A',
+
       authDomain: 'http-test-ab7be.firebaseapp.com'
     });
   }
