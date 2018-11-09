@@ -2,16 +2,16 @@
 <br>
 <div class="row">
   <div class="col-12">
-    <ul class="list-group" *ngIf="ingredients">
+    <ul class="list-group">
       <a
 				style="cursor: pointer;"
         class="list-group-item"
-				*ngFor="let item of ingredients; let i = index;"
+				*ngFor="let item of (shoppingListState | async).ingredients; let i = index;"
 				(click)="onEditItem(i)">
         <h5
           [ngClass]="{blueClass: blueClass === true}"
-          [ngStyle]="{borderLeft: blueClass === true ? '2px solid blue' : 'none'}">{{item.name}}</h5>
-        <p>{{item.amount}}</p>
+          [ngStyle]="{borderLeft: blueClass === true ? '2px solid blue' : 'none'}">{{ item.name }}</h5>
+        <p>{{ item.amount }}</p>
       </a>
     </ul>
   </div>

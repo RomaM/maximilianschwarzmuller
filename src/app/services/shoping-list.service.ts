@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
-import {LoggingService} from './logging.service';
 import {Subject} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 
 export class ShoppingListService {
-  constructor(private logData: LoggingService) {}
+  constructor() {}
 
   ingredientsChange = new Subject<Ingredient[]>();
   startedEditing = new Subject<number>();
@@ -24,14 +23,8 @@ export class ShoppingListService {
     return this.ingredients[index];
   }
 
-  addIngredients(ingredients: Ingredient[]) {
-    this.ingredients.push(...ingredients);
-    this.ingredientsChange.next(this.ingredients.slice());
-  }
-
   addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
-    this.logData.logStatusChange(this.ingredients);
     this.ingredientsChange.next(this.ingredients.slice());
   }
 
