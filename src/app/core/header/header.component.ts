@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {DataStorageService} from '../../shared/data-storage.service';
 import {AuthService} from '../../auth/auth.service';
 import * as firebase from 'firebase';
-import {HttpEvent, HttpEventType} from '@angular/common/http';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import * as fromApp from '../../store/app.reducers';
+import * as fromAuth from '../../auth/store/auth.reducers';
 
 @Component({
   selector: 'app-header',
@@ -10,20 +13,23 @@ import {HttpEvent, HttpEventType} from '@angular/common/http';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private dataStorageService: DataStorageService,
-              private authService: AuthService) {}
-
+  authState: Observable<fromAuth.State>;
   activeComponent = 'recipe';
+  constructor(private dataStorageService: DataStorageService,
+              private authService: AuthService,
+              private store: Store<fromApp.AppState>) {}
 
   ngOnInit() {
-    firebase.initializeApp({
+    this.authState = this.store.select('auth');
 
+    firebase.initializeApp({
+      apiKey: 'AIzaSyCMMmKapVEmocqjf6vUwebiBAsTb9_e43A',
       authDomain: 'http-test-ab7be.firebaseapp.com'
     });
   }
 
   isAuthenticated() {
-    return this.authService.isAuthenticated();
+    // return this.authService.isAuthenticated();
   }
 
   onChangeMenu(data: string) {
