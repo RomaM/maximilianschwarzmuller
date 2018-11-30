@@ -1,7 +1,7 @@
-<img class="img-fluid" [src]="recipe.imagePath">
-<h4>{{recipe.name}}</h4>
-<h5>{{recipe.desc}}</h5>
-<h6 *ngFor="let item of recipe.ingredients">
+<img class="img-fluid" [src]="(recipeState | async).recipes[id].imagePath">
+<h4>{{(recipeState | async).recipes[id].name}}</h4>
+<h5>{{(recipeState | async).recipes[id].desc}}</h5>
+<h6 *ngFor="let item of (recipeState | async).recipes[id].ingredients">
     Ingredient: {{item.name}}, Amount: {{item.amount}}
 </h6>
 <div class="btn-group" role="group" appDropdown>

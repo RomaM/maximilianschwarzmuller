@@ -41,21 +41,21 @@ export class RecipeService {
     return this.recipesArr.slice();
   }
 
-  getRecipe(id: number) {
-    return this.recipesArr[id];
-  }
-
-  addRecipe(recipe: Recipe) {
-    this.recipesArr.push(recipe);
-    this.recipeChanged.next(this.recipesArr.slice());
-  }
-
-  updateRecipe(index: number, newRecipe: Recipe) {
-    this.recipesArr[index] = newRecipe;
-  }
-
-  deleteRecipe(index: number) {
-    this.recipesArr.splice(index, 1);
-    this.recipeChanged.next(this.recipesArr.slice());
-  }
+  // getRecipe(id: number) {
+  //   return this.recipesArr[id];
+  // }
+  //
+  // addRecipe(recipe: Recipe) {
+  //   this.recipesArr.push(recipe);
+  //   this.recipeChanged.next(this.recipesArr.slice());
+  // }
+  //
+  // updateRecipe(index: number, newRecipe: Recipe) {
+  //   this.recipesArr[index] = newRecipe;
+  // }
+  //
+  // deleteRecipe(index: number) {
+  //   this.recipesArr.splice(index, 1);
+  //   this.recipeChanged.next(this.recipesArr.slice());
+  // }
 }
