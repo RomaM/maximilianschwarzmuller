@@ -30,6 +30,25 @@ export class DataStorageService {
     // const token = this.authService.getToken();
 
     // this.httpClient.get<Recipe[]>('https://http-test-ab7be.firebaseio.com/recipes.json?auth=' + token)
-
+    this.httpClient.get<Recipe[]>('https://http-test-ab7be.firebaseio.com/recipes.json', {
+      observe: 'body',
+      responseType: 'json'
+    })
+      .pipe(
+        map((recipes) => {
+          console.log(recipes);
+          for (const recipe of recipes) {
+            if (!recipe['ingredients']) {
+              recipe['ingredients'] = [];
+            }
+          }
+          return recipes;
+        }
+      ))
+      .subscribe(
+        (recipes: Recipe[]) => {
+          this.recipeService.setRecipes(recipes);
+        }
+      );
   }
 }

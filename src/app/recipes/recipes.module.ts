@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
 
 import {RecipesComponent} from './recipes.component';
 import {RecipeStartComponent} from './recipe-start/recipe-start.component';
@@ -12,7 +13,6 @@ import {CommonModule} from '@angular/common';
 import {RecipesRoutingModule} from './recipes-routing.module';
 import {SharedModule} from '../shared/shared.module';
 import {recipeReducer} from './store/recipe.reducers';
-import {EffectsModule} from '@ngrx/effects';
 import {RecipeEffects} from './store/recipe.effects';
 
 @NgModule({

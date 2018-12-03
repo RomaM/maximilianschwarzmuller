@@ -9,7 +9,7 @@ import {Subject} from 'rxjs';
 export class RecipeService {
   recipeChanged = new Subject<Recipe[]>()
 
-  recipesArr: Recipe[] = [
+  recipes: Recipe[] = [
     new Recipe(
       'First Recipe',
       'Desc of First Recipe',
@@ -33,29 +33,29 @@ export class RecipeService {
   constructor() {}
 
   setRecipes(recipes: Recipe[]) {
-    this.recipesArr = recipes;
-    this.recipeChanged.next(this.recipesArr.slice());
+    this.recipes = recipes;
+    this.recipeChanged.next(this.recipes.slice());
   }
 
   getRecipes() {
-    return this.recipesArr.slice();
+    return this.recipes.slice();
   }
 
   // getRecipe(id: number) {
-  //   return this.recipesArr[id];
+  //   return this.recipes[id];
   // }
   //
   // addRecipe(recipe: Recipe) {
-  //   this.recipesArr.push(recipe);
-  //   this.recipeChanged.next(this.recipesArr.slice());
+  //   this.recipes.push(recipe);
+  //   this.recipeChanged.next(this.recipes.slice());
   // }
   //
   // updateRecipe(index: number, newRecipe: Recipe) {
-  //   this.recipesArr[index] = newRecipe;
+  //   this.recipes[index] = newRecipe;
   // }
   //
   // deleteRecipe(index: number) {
-  //   this.recipesArr.splice(index, 1);
-  //   this.recipeChanged.next(this.recipesArr.slice());
+  //   this.recipes.splice(index, 1);
+  //   this.recipeChanged.next(this.recipes.slice());
   // }
 }

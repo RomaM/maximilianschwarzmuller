@@ -23,12 +23,12 @@ export class HeaderComponent implements OnInit {
               private store: Store<fromApp.AppState>) {}
 
   ngOnInit() {
-    this.authState = this.store.select('auth');
-
     firebase.initializeApp({
       apiKey: 'AIzaSyCMMmKapVEmocqjf6vUwebiBAsTb9_e43A',
       authDomain: 'http-test-ab7be.firebaseapp.com'
     });
+
+    this.authState = this.store.select('auth');
   }
 
   isAuthenticated() {
