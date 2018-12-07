@@ -42,13 +42,14 @@ export class HeaderComponent implements OnInit {
   }
 
   onSaveData() {
-    this.dataStorageService.storeRecipes()
-      .subscribe(
-        (response) => {
-          console.log(response);
-          },
-        (error) => { console.log(error); }
-      );
+    // this.dataStorageService.storeRecipes()
+    //   .subscribe(
+    //     (response) => {
+    //       console.log(response);
+    //       },
+    //     (error) => { console.log(error); }
+    //   );
+    this.store.dispatch(new RecipeActions.StoreRecipes());
   }
 
   onFetchData() {

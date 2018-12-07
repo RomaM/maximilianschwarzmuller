@@ -1,10 +1,8 @@
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Injectable} from '@angular/core';
 import {from} from 'rxjs';
-
 import {map, switchMap, mergeMap, tap} from 'rxjs/operators';
 import * as firebase from 'firebase';
-
 import * as AuthActions from './auth.actions';
 import {Router} from '@angular/router';
 
@@ -18,21 +16,21 @@ export class AuthEffects {
         return from(firebase.auth()
           .createUserWithEmailAndPassword(authData.username, authData.password));
       }),
-    switchMap(() => {
-      return from(firebase.auth().currentUser.getIdToken());
-    }),
-    mergeMap((token: string) => {
-      this.router.navigate(['/']);
-      return [
-        {
-          type: AuthActions.SIGNUP
-        },
-        {
-          type: AuthActions.SET_TOKEN,
-          payload: token
-        }
-      ];
-    })
+      switchMap(() => {
+        return from(firebase.auth().currentUser.getIdToken());
+      }),
+      mergeMap((token: string) => {
+        this.router.navigate(['/']);
+        return [
+          {
+            type: AuthActions.SIGNUP
+          },
+          {
+            type: AuthActions.SET_TOKEN,
+            payload: token
+          }
+        ];
+      })
   );
 
   @Effect()
